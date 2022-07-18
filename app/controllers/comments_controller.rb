@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
         if !@comment.save
             flash[:notice] = @comment.errors.full_messages.to_sentence
         end
-    
         redirect_to image_path(params[:image_id])
     end
 
