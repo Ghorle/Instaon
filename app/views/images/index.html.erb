@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+
+  <h2 style="margin-left: 320px">Feeds</h2>
+
+  <% @images.each do |image| %>
+    <div class="card" style="width: 50%; margin-bottom: 40px; margin-left: auto; margin-right: auto">
+    <%= image_tag image.image, class: 'd-block w-100' %>
+    <div class="card-body">
+    <h5 class="card-title"><%= image.description %></h5>
+        <% ncomment = 0 %>
+        <% @comments.each do |comment| %>
+          <% if image.id == comment.image_id %>
+            <% ncomment = ncomment + 1 %>
+          <% end %>
+        <% end%>
+        <%= link_to "Like & Comment", image_path(image.id), class: 'btn btn-success', style:'float: right;' %>
+      </p>
+      <p>
+      <strong><%= ncomment %></strong> - Comments and <strong><%= image.likes.count %></strong> - Likes
+      </p>
+      </div>
+      </div>
+      <% end %>
+<% else %>
+<h1>Welcome to Instaon.</h1>
+<h5>Please log in or create account.</h5>
+<% end %>

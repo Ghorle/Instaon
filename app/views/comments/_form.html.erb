@@ -1,0 +1,13 @@
+<form action="<%= image_comments_path(@image) %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <% if !parent.nil? %>
+    <input type="hidden" name="comment[parent_id]" value="<%= parent.id %>">
+  <% end %>
+
+  <div>
+    <textarea name="comment[content]" placeholder="Type Comment" rows="2" cols="30" required></textarea>
+  </div>
+
+  <input type="submit" value="Comment" class="btn btn-success" style="margin-bottom: 10px;">
+</form>

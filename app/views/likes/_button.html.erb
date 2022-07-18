@@ -1,0 +1,14 @@
+<% like = current_user.likes.find_by(image: @image) if !current_user.nil? %>
+<% if like.nil? %>
+  <form action="/likes" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="like[image_id]" value="<%= @image.id %>">
+    <input type="submit" value="Like" class="btn btn-info">
+  </form>
+<% else %>
+  <form action="<%= like_path(like) %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Unlike" class="btn btn-warning">
+  </form>
+<% end %>

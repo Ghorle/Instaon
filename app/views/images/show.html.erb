@@ -1,0 +1,35 @@
+<h2>Image</h2>
+
+<div class="row">
+  <div class="col-md-9">
+    <div class="card">
+      <div class="card-body p-2">
+        <%= image_tag @image.image, class: 'd-block w-50' %>
+      </div>
+    </div><br />
+    <%= render partial: 'likes/button', locals: { likeable: @image } %>
+    <br/>
+    <%= render partial: 'comments/form', locals: { image: @image, parent: nil } %>
+  </div>
+
+  <div class="col-md-3">
+    <%= link_to @image.user.full_name, profile_path(@image.user.username), class:"btn btn-success" %>
+    <%= link_to "Back", root_path, class:"btn btn-dark", style:'margin-left: 80px' %>
+
+    <p class="border-top mt-3 py-2">
+      <% if @image.description.present? %>
+        <%= @image.description %> -
+      <% end %>
+      <span class="text-muted"><%= time_ago_in_words @image.created_at %> ago</span>
+    </p>
+    <p>
+      <h5><strong>Likes</strong> - <%= @image.likes.count %></h5>
+    </p>
+    <p>
+        <h3><strong>Comments</strong></h3>
+        <p>
+        <%= render @image.comments.where(parent_id: nil).includes(:user).order(id: :desc) %>
+        </p>
+    </p>
+  </div>
+</div>

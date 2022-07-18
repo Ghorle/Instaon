@@ -1,0 +1,28 @@
+<% if @user.full_name == current_user.full_name %>
+<%= link_to "Edit Profile", edit_user_registration_path, class:"btn btn-success", style:'margin-left: 1000px' %>
+<% end %>
+<% nimage = 0 %>
+<% @images.each do |image| %>
+  <% if @user.id == image.user_id %>
+    <% nimage = nimage + 1 %>
+  <% end %>
+<% end%>
+<h2><%= @user.full_name %></h2>
+<h6 style="margin-left: 15px"><%= nimage %> Posts</h6>
+<br/>
+<div class="card-columns">
+<% @images.each do |image| %>
+    <div class="col-md-4">
+    <div class="card" style="width: 80%;">
+        <%= image_tag image.image, class: 'd-block w-100' %>
+        <div class="card-body">
+        <h5 class="card-title"><%= image.description %>
+        <% if @user.full_name == current_user.full_name %>
+        <% end %>
+        </h5>
+      </div>
+    </div>
+    </div>
+    <br/>
+<% end %>
+</div>

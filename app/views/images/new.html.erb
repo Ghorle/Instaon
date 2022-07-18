@@ -1,0 +1,46 @@
+<h2 style="margin-left: 420px;">Upload</h2>
+<br/>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <%= form_for @image do |f| %>
+      <% if f.object.errors.any? %>
+        <div class="alert alert-danger">
+          <p>The following errors prevent the image from being uploaded.</p>
+
+          <ul>
+            <% f.object.errors.full_messages.each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.drag_and_drop_file_field :image, 'Drag and drop image here' %>
+      </div>
+        <br/>
+      <div class="form-group">
+        <strong><%= f.label :description %></strong>
+        <%= f.text_area :description, class: 'form-control', style:'width: 50%' %>
+      </div>
+        <br/>
+      <%= f.submit 'Post', class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>
+<%= link_to "Back", root_path, class:"btn btn-dark", style:'margin-left: 330px; margin-top: 10px' %>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>

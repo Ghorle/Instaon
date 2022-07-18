@@ -1,0 +1,26 @@
+<article>
+<strong><%= comment.content %></strong>
+<p><small> <span class="text-muted"><%= time_ago_in_words comment.created_at %> ago</span> - <%= comment.user.email %></small></p>
+
+    <a href="#" class="comment-form-display">Reply</a>
+        <% if comment.user_id == current_user.id %>
+            <%= link_to 'Delete Comment', [comment.image, comment], method: :delete, data: { confirm: 'Are you sure?' }, style:'float: right;' %>
+        <% end %>
+    <div class="comment-form" style="display: none">
+        <%= render partial: 'comments/form', locals: { post: comment.image, parent: comment } %>
+    </div>
+<hr />
+    <div class="sub-comment" style="padding-left: 20px">
+    <%= render comment.comments.order(id: :desc) %>
+    </div>
+
+</article>
+
+    <script>
+        document.querySelectorAll('.comment-form-display').forEach((el) => {
+            el.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            el.nextElementSibling.style = 'display: block;'
+        })
+    })
+    </script>
