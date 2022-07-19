@@ -22,12 +22,12 @@
   <form action="/likes" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="like[image_id]" value="<%= @image.id %>">
-    <button class="btn btn-info"><i class="fa fa-thumbs-up"></i></button>
+    <button class="btn btn-light"><i class="fa fa-thumbs-up" style="color:blue"></i></button>
   </form>
 </div>
 <% else %>
 <div>
-<%= link_to raw("<i class=\"fa fa-thumbs-down\"></i>"), like_path(like), class: "btn btn-warning", method: :delete %>
+<%= link_to raw("<i class=\"fa fa-thumbs-down\" style=\"color:red\"></i>"), like_path(like), method: :delete, class:"btn btn-light" %>
 </div>
 <% end %>
 

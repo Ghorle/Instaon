@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
 
-  <h2 style="margin-left: 320px">Feeds</h2>
+  <h2 style="text-align: center;">Feeds</h2>
 
   <% @images.each do |image| %>
-    <div class="card" style="width: 50%; margin-bottom: 40px; margin-left: auto; margin-right: auto">
+    <div class="card" style="width: 40%; margin-bottom: 40px; margin-left: auto; margin-right: auto; box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);">
     <%= image_tag image.image, class: 'd-block w-100' %>
     <div class="card-body">
     <h5 class="card-title"><%= image.description %></h5>
@@ -13,10 +13,10 @@
             <% ncomment = ncomment + 1 %>
           <% end %>
         <% end%>
-        <%= link_to "Like & Comment", image_path(image.id), class: 'btn btn-success', style:'float: right;' %>
+        <%= link_to raw("<i class=\"fa fa-exclamation-circle\" style=\"font-size:25px;color:black\"></i>"), image_path(image.id), style:'float: right;' %>
       </p>
       <p>
-      <strong><%= ncomment %></strong> <i class="fa fa-comments"></i> - <strong><%= image.likes.count %></strong> <i class="fa fa-thumbs-up"></i>
+      <strong><%= ncomment %></strong> <i class="fa fa-comments" style="color:rgb(98, 169, 152)"></i> - <strong><%= image.likes.count %></strong> <i class="fa fa-thumbs-up" style="color:blue"></i>
       </p>
       </div>
       </div>
