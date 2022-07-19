@@ -2,9 +2,9 @@
 <strong><%= comment.content %></strong>
 <p><small> <span class="text-muted"><%= time_ago_in_words comment.created_at %> ago</span> - <%= comment.user.email %></small></p>
 
-    <a href="#" class="comment-form-display">Reply</a>
+    <a href="#" class="comment-form-display"><i class="fa fa-reply" style="font-size:22px"></i></a>
         <% if comment.user_id == current_user.id %>
-            <%= link_to 'Delete Comment', [comment.image, comment], method: :delete, data: { confirm: 'Are you sure?' }, style:'float: right;' %>
+            <%= link_to raw("<i class=\"fa fa-trash-o\" style=\"font-size:25px;\"></i>"), [comment.image, comment], method: :delete, data: { confirm: 'Are you sure?' }, style:'float: right;' %>
         <% end %>
     <div class="comment-form" style="display: none">
         <%= render partial: 'comments/form', locals: { post: comment.image, parent: comment } %>
@@ -24,3 +24,4 @@
         })
     })
     </script>
+    

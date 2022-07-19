@@ -5,9 +5,9 @@
     <input type="hidden" name="comment[parent_id]" value="<%= parent.id %>">
   <% end %>
 
-  <div>
+  <div class="input-group">
     <textarea name="comment[content]" placeholder="Type Comment" rows="2" cols="30" required></textarea>
+    <button class="btn btn-success"><i class="fa fa-comments"></i> Comment</button>
   </div>
 
-  <input type="submit" value="Comment" class="btn btn-success" style="margin-bottom: 10px;">
 </form>

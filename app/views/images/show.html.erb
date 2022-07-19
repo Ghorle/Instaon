@@ -14,7 +14,7 @@
 
   <div class="col-md-3">
     <%= link_to @image.user.full_name, profile_path(@image.user.username), class:"btn btn-success" %>
-    <%= link_to "Back", root_path, class:"btn btn-dark", style:'margin-left: 80px' %>
+    <%= link_to raw("<i class=\"fa fa-arrow-circle-left\"></i>"), root_path, class:"btn btn-dark", style:'margin-left: 80px' %>
 
     <p class="border-top mt-3 py-2">
       <% if @image.description.present? %>

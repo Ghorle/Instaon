@@ -1,5 +1,5 @@
 <% if @user.full_name == current_user.full_name %>
-<%= link_to "Edit Profile", edit_user_registration_path, class:"btn btn-success", style:'margin-left: 1000px' %>
+<%= link_to raw("<i class=\"fa fa-pencil\" style=\"font-size:25px;\"> Profile</i>"), edit_user_registration_path, class:"btn btn-success", style:'margin-left: 1000px' %>
 <% end %>
 <% nimage = 0 %>
 <% @images.each do |image| %>
